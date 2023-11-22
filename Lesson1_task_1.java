@@ -32,33 +32,39 @@ public class Lesson1_task_1 {
   private static int[] generateCoefficients(int k) {
     int[] coef = new int[k + 1];
     Random random = new Random();
-    for (int i = 0; i < k; i++) {
+    for (int i = 0; i <= k; i++) {
       coef[i] = random.nextInt(101);
     }
     return coef;
   }
 
   private static void printPolynomal(int[] coef) {
-    System.out.println("Polynomal: ");
+    System.out.print("Polynomial: ");
     int degree = coef.length - 1;
 
-    for (int i = degree; i >= 0; i++) {
-      int coeffitient = coef[i];
+    for (int i = degree; i >= 0; i--) {
+      int coefficient = coef[i];
 
-      if (coeffitient != 0) {
-        System.out.print(coeffitient);
+      if (coefficient != 0) {
+        if (i < degree) {
+          System.out.print(coefficient > 0 ? " + " : " - ");
+        } else {
+          System.out.print(coefficient > 0 ? "" : "-");
+        }
+
+        if (Math.abs(coefficient) != 1 || i == 0) {
+          System.out.print(Math.abs(coefficient));
+        }
 
         if (i > 0) {
           System.out.print("x");
           if (i > 1) {
-            System.err.print("^" + i);
+            System.out.print("^" + i);
           }
         }
-        System.out.print(" + ");
-      } else {
-          System.out.print(" = 0");
       }
     }
     System.out.println();
   }
+
 }
